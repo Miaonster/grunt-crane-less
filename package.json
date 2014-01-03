@@ -1,0 +1,39 @@
+{
+  "name": "grunt-crane-less",
+  "description": "Builder for grunt-crane, which build less files.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/witcher42/grunt-crane-less",
+  "author": {
+    "name": "Witcher42",
+    "email": "dy.lengleng@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/witcher42/grunt-crane-less.git"
+  },
+  "bugs": {
+    "url": "https://github.com/witcher42/grunt-crane-less/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/witcher42/grunt-crane-less/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "dependencies": {
+    "less": "~1.5.0"
+  }
+}
