@@ -40,9 +40,6 @@ module.exports = function (grunt) {
                 return defer.reject(err.message);
             }
 
-            process.exit();
-            console.log(Object.keys(parser.imports.files));
-
             var imports = Object.keys(parser.imports.files)
                 .map(function (file) {
                     return path.resolve(file).replace(path.resolve(src) + '/', '');
