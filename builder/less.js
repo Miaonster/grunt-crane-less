@@ -57,7 +57,9 @@ module.exports = function (grunt) {
             };
 
             self.build = function () {
-                grunt.file.write(dest + id, tree.toCSS({
+                var file = path.resolve(dest, id);
+
+                grunt.file.write(file, tree.toCSS({
                     compress: minify
                 }));
 
