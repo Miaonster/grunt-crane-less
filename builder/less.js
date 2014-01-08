@@ -1,10 +1,6 @@
-var path    = require('path');
-var URL     = require('url');
-var less    = require('less');
-var rework  = require('rework');
+var path = require('path');
+var less = require('less');
 var promise = require('../util/promise');
-
-var HTTP_FILE_RE = /^(https?:\/\/.*?\/)/;
 
 var Parser = less.Parser;
 
@@ -67,34 +63,10 @@ module.exports = function (grunt) {
         var filename = self.id.replace(/\.less$/, '.css');
 
         this.parserDefer.done(function (tree) {
-            var content = tree.toCSS({
-                compress: minify
-            });
-
-            content = rework(content)
-                .use(rework.url(function (url) {
-                    var match = url.match(HTTP_FILE_RE);
-                    var filepath;
-                    if (match && rootpaths.indexOf(match[1]) === -1) {
-                        return url;
-                    }
-
-                    // 获取文件的路径
-                    if (match) {
-                        filepath = url.replace(match[1], '');
-                    } else {
-                        filepath = path.normalize(path.dirname(self.id) + '/' + url);
-                    }
-                    filepath = URL.parse(filepath).pathname;
-
-                    var version = +require('fs').statSync(src + filepath).mtime % grunt.config('cacheExpire');
-
-                    return url + '?v=' + version;
-                }))
-                .toString();
-
             try {
-                grunt.file.write(dest + filename, content);
+                grunt.file.write(dest + filename, tree.toCSS({
+                    compress: minify
+                }));
             } catch (ex) {
                 defer.resolve([]);
             }

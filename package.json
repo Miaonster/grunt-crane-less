@@ -1,7 +1,7 @@
 {
   "name": "grunt-crane-less",
   "description": "Builder for grunt-crane, which build less files.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/witcher42/grunt-crane-less",
   "author": {
     "name": "Witcher42",
