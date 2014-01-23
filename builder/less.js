@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     var dest     = grunt.config('dest');
     var src      = grunt.config('src');
 
-    function Builder (id) {
+    function Builder(id) {
         var that = this;
 
         this.id = id;
@@ -51,6 +51,7 @@ module.exports = function (grunt) {
                 .map(function (file) {
                     return path.resolve(file).replace(path.resolve(src) + '/', '');
                 });
+
             var children = [];
 
             // 图片也算是一种children
@@ -108,7 +109,6 @@ module.exports = function (grunt) {
                     var buffer,
                         filepath,
                         fullpath,
-                        version,
                         match = url.match(HTTP_FILE_RE);
 
                     if (match && rootpaths.indexOf(match[1]) === -1) {
@@ -131,14 +131,10 @@ module.exports = function (grunt) {
                         } catch(ex) {
                             return defer.reject('Image no found: ' + url);
                         }
-                        versionCache[fullpath] = MD5(buffer);
+                        versionCache[fullpath] = MD5(buffer).substr(0, 8);
                     }
 
-                    version = versionCache[fullpath];
-
-                    //version = +require('fs').statSync(src + filepath).mtime % grunt.config('cacheExpire');
-
-                    return url + '?v=' + version;
+                    return url + '?v=' + versionCache[fullpath];
                 }))
                 .toString();
 
