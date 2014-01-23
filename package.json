@@ -1,7 +1,7 @@
 {
   "name": "grunt-crane-less",
-  "description": "Builder for grunt-crane, which build less files.",
-  "version": "0.1.6",
+  "description": "Builder for grunt-crane, which build and compress less files.",
+  "version": "0.2.0",
   "homepage": "https://github.com/witcher42/grunt-crane-less",
   "author": {
     "name": "Witcher42",
@@ -34,7 +34,9 @@
     "grunt": "~0.4.1"
   },
   "dependencies": {
-    "less": "~1.5.0",
-    "rework": "~0.20.2"
+    "less": "1.5.1",
+    "rework": "~0.20.2",
+    "MD5": "~1.2.0",
+    "css": "~1.6.0"
   }
 }
