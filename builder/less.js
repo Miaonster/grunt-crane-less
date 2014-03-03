@@ -81,7 +81,7 @@ module.exports = function (grunt) {
             try {
                 content = tree.toCSS();
             } catch (ex) {
-                return defer.resolve([filename]);
+                return defer.resolve([filename], { type: 'warning', text: ex.message });
             }
 
             rework(content)
